@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css"/>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
+</head>
+
+<body>
+
+<input type="text" id="fromPlace" placeholder="From">
+<input type="text" id="toPlace" placeholder="To">
+<button onclick="showRoute()">Show Route</button>
+
+<div id="map" style="height:500px;"></div>
+
+<script>
+
+var map = L.map('map').setView([11.1271, 78.6569], 7);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap'
+}).addTo(map);
+
+var routeControl;
+
+function showRoute() {
+
+    console.log("Button Clicked");
+
+    var from = document.getElementById("fromPlace").value;
+    var to = document.getElementById("toPlace").value;
+
+    if (!from || !to) {
+        alert("Enter From and To");
+        return;
+    }
+
+    if (routeControl) {
+        map.removeControl(routeControl);
+    }
+
+    routeControl = L.Routing.control({
+        waypoints: [],
+        routeWhileDragging: false,
+        show: false,
+        createMarker: function() { return null; }
+    }).addTo(map);
+
+    var geocoder = L.Control.Geocoder.nominatim();
+
+    geocoder.geocode(from, function(r1) {
+
+        if (!r1.length) return alert("From not found");
+
+        geocoder.geocode(to, function(r2) {
+
+            if (!r2.length) return alert("To not found");
+
+            routeControl.setWaypoints([
+                r1[0].center,
+                r2[0].center
+            ]);
+
+        });
+
+    });
+}
+
+</script>
+
+</body>
+</html>

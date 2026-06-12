@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+
+<img id="myImage" src="C:\Users\chood\Downloads\e0fd25f9127a9a109a0648c83ee61643.jpg" width="100" height="180">
+
+<p>
+  <button type="button" onclick="light(1)">On</button>
+  <button type="button" onclick="light(0)"> Off</button>
+</p>
+
+<script src="script.js">
+    function light(sw) {
+  var pic;
+  if (sw == 0) {
+    pic = "C:\Users\chood\Downloads\e0fd25f9127a9a109a0648c83ee61643.jpg";
+  } else {
+    pic = "C:\Users\chood\Downloads\on.jpg";
+  }
+  document.getElementById('myImage').src = pic;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Button Calculator</title>
+</head><center>
+<body>
+<div style="border: 2px solid black; display: inline-block;margin:5px; background-color: rgb(16, 16, 16);">
+
+<h2 style="color: antiquewhite;">Simple Calculator</h2>
+
+<input type="text" id="display" >
+<br>
+<input type="text" id="result" >
+<br><br>
+
+<button style="color: black;background-color: rgb(62, 58, 58); "onclick="press(1)">1</button>
+<button style="color: black;background-color: rgb(62, 58, 58)" onclick="press(2)">2</button>
+<button style="color: black;background-color: rgb(62, 58, 58)"onclick="press(3)">3</button>
+<button style="color: black;background-color: rgb(62, 58, 58)" onclick="press('+')">+</button>
+<br><br>
+
+<button style="color: black;background-color: rgb(62, 58, 58)" onclick="press(4)">4</button>
+<button style="color: black;background-color: rgb(62, 58, 58)"onclick="press(5)">5</button>
+<button style="color: black;background-color: rgb(62, 58, 58)"onclick="press(6)">6</button>
+<button style="color: black;background-color: rgb(62, 58, 58)"onclick="press('-')">-</button>
+<br><br>
+
+<button style="color: black;background-color: rgb(62, 58, 58)"onclick="press(7)">7</button>
+<button style="color: black;background-color: rgb(62, 58, 58)"onclick="press(8)">8</button>
+<button style="color: black;background-color: rgb(62, 58, 58)"onclick="press(9)">9</button>
+<button style="color: black;background-color: rgb(62, 58, 58)"onclick="press('*')">*</button>
+<br><br>
+
+<button style="color: black;background-color: rgb(62, 58, 58)"onclick="press(0)">0</button>
+<button style="color: black;background-color: rgb(62, 58, 58)"onclick="calculate()">=</button>
+<button style="color: black;background-color: rgb(62, 58, 58)"onclick="clearDisplay()">C</button>
+<button style="color: black;background-color: rgb(62, 58, 58)"onclick="press('/')">/</button>
+<br><br>
+</div>
+<script>
+    function press(value) {
+        display.value += value;
+    }
+
+    function calculate() {
+        result.value = eval(display.value);
+    }
+
+    function clearDisplay() {
+        result.value = "";
+    }
+</script>
+</center>
+</body>
+</html>
